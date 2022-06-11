@@ -15,6 +15,7 @@ const ContextProvider = ({ children }) => {
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
 
+
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
@@ -25,6 +26,8 @@ const ContextProvider = ({ children }) => {
         setStream(currentStream);
 
         myVideo.current.srcObject = currentStream;
+        myVideo.current.autoplay = true;
+        myVideo.current.muted = false;
       });
 
     socket.on('me', (id) => setMe(id));
